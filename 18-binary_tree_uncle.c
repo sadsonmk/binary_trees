@@ -16,22 +16,17 @@ binary_tree_t *binary_tree_uncle(binary_tree_t *node)
 	curr = node->parent;
 	grandpa = curr->parent;
 
-	while (curr != NULL)
+	if (curr == NULL || grandpa == NULL)
+		return (NULL);
+	else if (grandpa->left == NULL || grandpa->right == NULL)
+		return (NULL);
+	else if (curr == grandpa->right)
 	{
-		if (grandpa == NULL)
-			return (NULL);
-		else if (grandpa->left == NULL || grandpa->right == NULL)
-			return (NULL);
-		else if (curr == grandpa->right)
-		{
-			uncle = grandpa->left;
-			break;
-		}
-		else if (curr == grandpa->left)
-		{
-			uncle = grandpa->right;
-			break;
-		}
+		uncle = grandpa->left;
+	}
+	else if (curr == grandpa->left)
+	{
+		uncle = grandpa->right;
 	}
 
 	return (uncle);
