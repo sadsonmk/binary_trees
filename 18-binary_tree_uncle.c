@@ -22,12 +22,12 @@ binary_tree_t *binary_tree_uncle(binary_tree_t *node)
 			return (NULL);
 		else if (grandpa->left == NULL || grandpa->right == NULL)
 			return (NULL);
-		else if (node->parent == grandpa->right)
+		else if (curr == grandpa->right)
 		{
 			uncle = grandpa->left;
 			break;
 		}
-		else
+		else if (curr == grandpa->left)
 		{
 			uncle = grandpa->right;
 			break;
